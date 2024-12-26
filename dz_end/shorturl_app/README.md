@@ -14,11 +14,11 @@
 ```
 git clone https://github.com/akkypat/SN_Rumyantsev
 docker build -t shorturl:latest .
-
-Далле из докера переносим образ на виртуальную виртуальную машину:
+```
+Далее из докера переносим образ на виртуальную виртуальную машину:
 Для запуска
 ```
-docker pull SN_Rumyantsev/shorturl_service:latest
+docker pull SN_Rumyantsev/shorturl_app:latest
 ```
 Потом создаем том для сохранения данных:
 ```
@@ -26,6 +26,6 @@ docker volume create shorturl_1
 ```
 Далее запускаем:
 ```
-docker run -d -p 8000:80 -v shorturl_1:/app/data SN_Rumyantsev/shorturl-service
+docker run -d -p 8000:80 -v shorturl_1:/app/data SN_Rumyantsev/shorturl_app
 ```
 Перейдя по ссылке http://localhost:8000/docs можно увидеть описанные в возможностях сервиса эндопинты.
