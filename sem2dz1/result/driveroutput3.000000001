@@ -1,0 +1,45 @@
+ . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     DAY(transaction_date) AS day,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     COUNT(*) AS num_transactions_v2,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     SUM(amount) AS total_volume,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     AVG(amount) AS avg_amount
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> FROM transactions_v2
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> GROUP BY year, month, day
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> ORDER BY year ASC, month ASC, day ASC;
+Error: Error while compiling statement: FAILED: SemanticException [Error 10004]: Line 9:9 Invalid table alias or column reference 'year': (possible column names are: transaction_id, user_id, amount, currency, transaction_date, is_fraud) (state=42000,code=10004)
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> --5
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> SELECT
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     t.transaction_id,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     l.category,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     COUNT(l.log_id) AS log_count,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .>     MAX(t.amount) AS max_transaction_amount
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> FROM transactions_v2 t
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> JOIN logs_v2 l ON t.transaction_id = l.transaction_id
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> GROUP BY t.transaction_id, l.category
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> ORDER BY log_count DESC;
++-------------------+-------------+------------+-------------------------+
+| t.transaction_id  | l.category  | log_count  | max_transaction_amount  |
++-------------------+-------------+------------+-------------------------+
++-------------------+-------------+------------+-------------------------+
+No rows selected (1.507 seconds)
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> Closing: 0: jdbc:hive2://localhost:10000
