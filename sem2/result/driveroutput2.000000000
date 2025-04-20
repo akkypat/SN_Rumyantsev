@@ -1,0 +1,79 @@
+Init job c9qgjavkpj795u0mu91g at Sun Apr 20 20:47:00 UTC 2025
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/lib/hive/lib/log4j-slf4j-impl-2.10.0.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/lib/hadoop/lib/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+Connecting to jdbc:hive2://localhost:10000
+Connected to: Apache Hive (version 3.1.2)
+Driver: Hive JDBC (version 3.1.2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://localhost:10000> --CREATE TABLE
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> CREATE TABLE transactions_v2 (
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> transaction_id BIGINT,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> user_id BIGINT,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> amount BIGINT,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> currency STRING,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> transaction_date TIMESTAMP,
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> is_fraud BIGINT
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> )
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> ROW FORMAT DELIMITED
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> FIELDS TERMINATED BY ','
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> STORED AS TEXTFILE;
+No rows affected (0.252 seconds)
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> INSERT INTO transactions_v2 VALUES
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10001,500,250.0,USD,2023-03-10 14:25:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10002,500,300.5,EUR,2023-03-10 14:30:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10003,501,-10.0,USD,2023-03-10 15:00:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10004,502,400.0,???,2023-03-10 15:10:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10005,501,120.5,RUB,2023-03-11 09:00:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10006,503,999.0,USD,2023-03-11 09:05:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10007,504,0.0,USD,2023-03-11 10:10:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10008,504,750.0,EUR,2023-03-11 10:20:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10009,500,275.25,RUB,2023-03-12 11:00:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10010,500,600.0,USD,2023-03-12 11:05:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10011,505,45.5,GBP,2023-03-12 11:10:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10012,505,-25.0,USD,2023-03-12 11:15:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10013,506,9999.99,USD,2023-03-13 09:00:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10014,506,120.5,EUR,2023-03-13 09:05:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10015,507,500.0,GBP,2023-03-13 09:10:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10016,507,123.45,???,2023-03-13 09:15:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10017,508,0.0,RUB,2023-03-14 10:00:00,1),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10018,508,450.0,USD,2023-03-14 10:05:00,0),
+. . . . . . . . . . . . . . . .> 
+. . . . . . . . . . . . . . . .> (10019,509,1000.0,EUR,2023-03-14 10:10:00,0),
+. . . . . .

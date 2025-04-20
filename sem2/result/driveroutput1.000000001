@@ -1,0 +1,10 @@
+jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> 
+0: jdbc:hive2://localhost:10000> SELECT * FROM logs_v2;
++-----------------+-------------------------+-------------------+------------------+------------------------+
+| logs_v2.log_id  | logs_v2.transaction_id  | logs_v2.category  | logs_v2.comment  | logs_v2.log_timestamp  |
++-----------------+-------------------------+-------------------+------------------+------------------------+
++-----------------+-------------------------+-------------------+------------------+------------------------+
+No rows selected (2.604 seconds)
+0: jdbc:hive2://localhost:10000> Closing: 0: jdbc:hive2://localhost:10000
